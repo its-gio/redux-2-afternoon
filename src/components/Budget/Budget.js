@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { requestUserData } from '../../redux/userReducer'
 import Background from './../shared/Background/Background';
 import Chart1 from './../shared/Chart1';
 import Chart2 from './../shared/Chart2';
@@ -11,6 +12,9 @@ import './Budget.css';
 
 
 class Budget extends Component {
+  componentDidMount() {
+    this.props.requestUserData();
+  }
 
   render() {
     return (
@@ -34,6 +38,6 @@ class Budget extends Component {
   }
 }
 
-const mapStateToProps = (reduxState) => ({ budget: reduxState.budget });
+const mapStateToProps = (reduxState) => ({ budget: reduxState.budget, user: reduxState.user });
 
-export default connect(mapStateToProps)(Budget);
+export default connect(mapStateToProps, { requestUserData })(Budget);
