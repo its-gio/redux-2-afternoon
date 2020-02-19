@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Background from './../shared/Background/Background'
+import { connect } from 'react-redux';
+import Background from './../shared/Background/Background';
 import Chart1 from './../shared/Chart1';
 import Chart2 from './../shared/Chart2';
 import AddPurchase from './../shared/AddPurchase';
@@ -33,4 +34,6 @@ class Budget extends Component {
   }
 }
 
-export default Budget;
+const mapStateToProps = (reduxState) => ({ budget: reduxState.budget });
+
+export default connect(mapStateToProps)(Budget);
